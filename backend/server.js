@@ -29,6 +29,12 @@ io.on('connection', (socket) => {
     });
 });
 
+
+// Routes
+app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/placements', require('./routes/placementRoutes'));
+app.use('/api/pathways', require('./routes/pathwayRoutes'));
+
 const path = require('path');
 
 // Serve frontend in production
@@ -43,12 +49,6 @@ if (process.env.NODE_ENV === 'production') {
         res.send('API is running...');
     });
 }
-
-
-// Routes
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/placements', require('./routes/placementRoutes'));
-app.use('/api/pathways', require('./routes/pathwayRoutes'));
 
 const PORT = process.env.PORT || 5000;
 
